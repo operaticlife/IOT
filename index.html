@@ -3,7 +3,15 @@
 		<title>IOT Demo</title>
 	</head>
 	<body>
-		<button>ON</button>
-		<button>OFF</button>
+		<button id="onBtn">ON</button>
+		<button id="offBtn">OFF</button>
 	</body>
+	<script>
+		document.getElementById('onBtn').addEventListener('click', function(){
+			console.log('MQTT Send ON message');
+		});
+		document.getElementById('offBtn').addEventListener('click', function(){
+			console.log('MQTT Send OFF message');
+		});
+	</script>
 </html>
