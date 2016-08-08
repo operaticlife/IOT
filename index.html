@@ -1,17 +1,27 @@
 ﻿<html>
 	<head>
 		<title>IOT Demo</title>
+		<script src="./browserMqtt.js"></script>
 	</head>
 	<body>
 		<button id="onBtn">ON</button>
 		<button id="offBtn">OFF</button>
 	</body>
 	<script>
+		var client  = mqtt.connect('mqtt://test.mosquitto.org:8080');
+ 
+		client.on('connect', function () {
+			console.log("MQTT CONNECTED");
+			
+		});
+		 
 		document.getElementById('onBtn').addEventListener('click', function(){
 			console.log('MQTT Send ON message');
+			client.publish('/nuu/csie/door', '1');
 		});
 		document.getElementById('offBtn').addEventListener('click', function(){
 			console.log('MQTT Send OFF message');
+			client.publish('/nuu/csie/door', '0');
 		});
 	</script>
 </html>
